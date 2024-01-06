@@ -13,29 +13,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.jsmt_game.BoardBaseHard
 
 @Composable
-fun Screen3Code(navController: NavHostController) {
+fun GamePage(navController: NavHostController, screenNumber: Int) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.LightGray)
+        modifier = Modifier.fillMaxSize().background(Color.Gray)
     ) {
         Text(
-            text = "Game Hard",
+            text = "Level $screenNumber",
             color = Color.White,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold
         )
-        Button(onClick = {
-            navController.navigate("second_Screen")
-        }
+        Button(
+            onClick = {
+                navController.popBackStack()
+            }
         ) {
-            Text(text = "Change Level")
+            Text(text = "Back to Home")
         }
-        BoardBaseHard()
     }
 }

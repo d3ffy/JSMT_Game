@@ -16,8 +16,10 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.jsmt_game.R
+
 
 
 @Composable
@@ -44,12 +46,14 @@ fun TitlePage(navController: NavHostController) {
 
         ) {
             Text(
-                text = "Enter Game"
+                text = "Enter Game",
+                fontSize = 15.sp
             )
         }
 
         Text(
-            text = "developed for aj.Jackeyy"
+            text = "Developed For SF333",
+            fontSize = 12.sp
         )
 
     }

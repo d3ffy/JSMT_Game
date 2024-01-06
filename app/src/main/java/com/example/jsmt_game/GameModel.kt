@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -88,7 +89,7 @@ public fun gameReset() {
     isWin = false
 }
 @Composable
-fun GameSetup() {
+public fun GameSetup() {
     CreateBoard(level)
 }
 
@@ -100,7 +101,7 @@ fun Filled() {
             .padding(0.dp)
     ) {
         drawRect(
-            color = Color.DarkGray,
+            color = Color(0xFFFFFedc2efB),
             size = Size(size.width, size.height),
             topLeft = Offset(0f, 0f),
         )
@@ -203,17 +204,18 @@ fun CreateBoard(
 
     Column (
         modifier = Modifier
-            .border(1.dp, Color.Gray)
+            .border(1.dp, Color.Black)
     ){
         Row (
             modifier = Modifier
-                .border(1.dp, Color.Gray)
-        ){
-            Column (
+                .border(1.dp, Color(0xFFFFFedc2ef))
+        ) {
+            Column(
                 modifier = Modifier
-                    .width(300.dp/level.size)
-            ){
-                Text("$heart")
+                    .width(300.dp / level.size)
+            )
+            {
+
             }
             Column (
                 modifier = Modifier
@@ -224,20 +226,24 @@ fun CreateBoard(
                     items(colHints) { col ->
                         LazyColumn(
                             modifier = Modifier
-                                .border(1.dp, Color.Gray)
+                                .border(1.dp, Color(0xFFFFFedc2ef))
                                 .width(300.dp / level.size)
+                                .padding(5.dp)
+                                .offset(x = 25.dp)
                         ){
                             items(col) { item ->
                                 Text(text = "$item")
                             }
                         }
+
+
                     }
                 }
             }
         }
         Row (
             modifier = Modifier
-                .border(1.dp, Color.Gray)
+                .border(1.dp, Color.Black)
         ){
             LazyColumn (
                 modifier = Modifier
@@ -247,21 +253,27 @@ fun CreateBoard(
                     LazyRow (
                         modifier = Modifier
                             .height(300.dp / level.size)
+                            .offset(x = 20.dp)
+                            .offset(y = 15.dp)
+
                     ){
                         items(row) { item ->
                             Text(text="$item")
                         }
                     }
+
                 }
             }
+            //ตาราง
             Column (
                 modifier = Modifier
-                    .border(1.dp, Color.Gray)
+                    .border(1.dp, Color.Black)
                     .height(300.dp)
+
             ){
                 Box(
                     modifier = Modifier
-                        .border(1.dp, Color.Gray)
+                        .border(1.dp, Color.Red)
                         .size(width = 300.dp, height = 300.dp)
                 ) {
                     LazyVerticalGrid(

@@ -4,8 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,8 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.jsmt_game.gameReset
 import com.example.jsmt_game.GameSetup
+import com.example.jsmt_game.gameReset
 import com.example.jsmt_game.levelSetup
 
 @Composable
@@ -26,26 +28,42 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Gray)
+            .background(Color(0xFFFFFedc2ef))
     ) {
         Text(
             text = "Level $screenNumber",
             color = Color.White,
             fontSize = 40.sp,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.offset(y = (-30).dp)
         )
+
 
         levelSetup(screenNumber)
         GameSetup()
 
         Button(
             onClick = {
-                navController.popBackStack()
                 gameReset()
+                navController.navigate("menu_Screen")
             },
-            modifier = Modifier.padding(top = 20.dp)
+            modifier = Modifier.padding(top = 20.dp),
+            colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
+
         ) {
-            Text(text = "Back to Home")
+            Text(text = "Back To Home")
         }
+
+        // ปุ่ม rak
+//        Button(
+//            onClick = {
+//                GameSetup()
+//            },
+//            modifier = Modifier.padding(top = 20.dp),
+//            colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
+//
+//        ) {
+//            Text(text = "Restart")
+//        }
     }
 }

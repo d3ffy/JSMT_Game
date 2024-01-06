@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
@@ -37,7 +38,7 @@ fun MenuPage(navController: NavHostController) {
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = "Select Level",
-            color = Color.Black,
+            color = Color(0xFFFF69B4),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(top = 30.dp)
@@ -84,9 +85,16 @@ fun MenuPage(navController: NavHostController) {
         Button(
             onClick = {
                 navController.navigate("title_Screen")
-            }
+            },
+            modifier = Modifier
+                   .offset(y = (100).dp),
+            colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4)),
+
         ) {
-            Text(text = "Back to Title")
+            Text(
+                text = "Exit",
+                fontSize = 15.sp
+            )
         }
     }
 }

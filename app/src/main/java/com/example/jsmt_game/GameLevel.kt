@@ -52,15 +52,16 @@ val level7 = arrayListOf(
     arrayListOf(1, 1, 1, 1, 1, 1),
     arrayListOf(1, 1, 1, 1, 1, 1),
     arrayListOf(1, 1, 1, 1, 1, 1),
-    arrayListOf(1, 1, 1, 0, 1, 1)
+    arrayListOf(1, 1, 0, 0, 1, 1) ,
+    arrayListOf(1, 1, 0, 0, 1, 1)
 )
 
 val level8 = arrayListOf(
-    arrayListOf(1, 1, 1, 1, 1, 1),
-    arrayListOf(0, 1, 1, 1, 1, 1),
-    arrayListOf(1, 1, 1, 1, 1, 1),
-    arrayListOf(0, 1, 1, 1, 1, 1),
-    arrayListOf(0, 1, 0, 0, 0, 1)
+    arrayListOf(1, 1, 1, 1, 1),
+    arrayListOf(0, 1, 1, 1, 1),
+    arrayListOf(1, 1, 1, 1, 1),
+    arrayListOf(0, 1, 1, 1, 1),
+    arrayListOf(0, 1, 0, 0, 0)
 )
 
 val level9 = arrayListOf(

@@ -9,7 +9,7 @@ import com.example.jsmt_game.page.GamePage
 import com.example.jsmt_game.page.MenuPage
 import com.example.jsmt_game.page.TitlePage
 
-val screenNumber: Int = 0
+var screenNumber: Int = 0
 
 @Composable
 fun PageSelector(){
@@ -28,8 +28,7 @@ fun PageSelector(){
         for (i in 1..30) {
             val screenName = "Screen$i"
             composable(screenName) {
-                val screenNumber = i
-                GamePage(navController = navController, screenNumber)
+                GamePage(navController = navController, screenNumber = i)
             }
         }
     }

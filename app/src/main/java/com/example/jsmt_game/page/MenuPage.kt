@@ -2,7 +2,6 @@ package com.example.jsmt_game.page
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -77,7 +76,7 @@ fun MenuPage(navController: NavHostController) {
                         ) {
                             Text(text = String.format("%d", number))
                         }
-                        Spacer(modifier = Modifier.width(5.dp))
+                        Spacer(modifier = Modifier.width(1.dp))
                     }
                 }
             }

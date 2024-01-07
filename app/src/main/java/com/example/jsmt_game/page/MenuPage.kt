@@ -45,7 +45,7 @@ fun MenuPage(navController: NavHostController) {
             fontFamily = MinecraftFontFamily,
             modifier = Modifier.padding(top = 30.dp)
         )
-        val numbers = (1..20).toList()
+        val numbers = (1..21).toList()
         Column(
             modifier = Modifier
                 .background(Color.White)

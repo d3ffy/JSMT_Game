@@ -42,6 +42,8 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
         levelSetup(screenNumber)
         GameSetup()
 
+
+
         Button(
             onClick = {
                 gameReset()
@@ -51,19 +53,9 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
             colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
 
         ) {
-            Text(text = "Back To Home")
+            Text(text = "Restart")
         }
 
-        // ปุ่ม rak
-//        Button(
-//            onClick = {
-//                GameSetup()
-//            },
-//            modifier = Modifier.padding(top = 20.dp),
-//            colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
-//
-//        ) {
-//            Text(text = "Restart")
-//        }
+
     }
 }

@@ -46,6 +46,8 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
         levelSetup(screenNumber)
         GameSetup()
 
+
+
         Button(
             onClick = {
                 gameReset()
@@ -65,6 +67,5 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
             else "",
             fontFamily = MinecraftFontFamily
         )
-
     }
 }

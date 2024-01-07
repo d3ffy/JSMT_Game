@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.jsmt_game.R
-
+import com.example.jsmt_game.ui.theme.MinecraftFontFamily
 
 
 @Composable
@@ -47,13 +47,15 @@ fun TitlePage(navController: NavHostController) {
         ) {
             Text(
                 text = "Enter Game",
-                fontSize = 15.sp
+                fontSize = 16.sp,
+                fontFamily = MinecraftFontFamily
             )
         }
 
         Text(
             text = "Developed For SF333",
-            fontSize = 12.sp
+            fontSize = 12.sp,
+            fontFamily = MinecraftFontFamily
         )
 
     }

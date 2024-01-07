@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.jsmt_game.ui.theme.JSMT_GameTheme
+import com.example.jsmt_game.ui.theme.MinecraftFontFamily
 
 @Composable
 fun MenuPage(navController: NavHostController) {
@@ -41,6 +42,7 @@ fun MenuPage(navController: NavHostController) {
             color = Color(0xFFFF69B4),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
+            fontFamily = MinecraftFontFamily,
             modifier = Modifier.padding(top = 30.dp)
         )
         val numbers = (1..20).toList()
@@ -75,7 +77,9 @@ fun MenuPage(navController: NavHostController) {
                             colors =  ButtonDefaults.buttonColors(Color(0xFFFFFedc2ef)),
 
                         ) {
-                            Text(text = String.format("%d", number))
+                            Text(text = String.format("%d", number),
+                                fontFamily = MinecraftFontFamily
+                            )
                         }
                         Spacer(modifier = Modifier.width(1.dp))
                     }
@@ -93,7 +97,8 @@ fun MenuPage(navController: NavHostController) {
         ) {
             Text(
                 text = "Exit",
-                fontSize = 15.sp
+                fontSize = 15.sp,
+                fontFamily = MinecraftFontFamily
             )
         }
     }

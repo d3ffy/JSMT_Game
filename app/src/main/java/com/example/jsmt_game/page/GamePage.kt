@@ -19,7 +19,11 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.jsmt_game.GameSetup
 import com.example.jsmt_game.gameReset
+import com.example.jsmt_game.heart
+import com.example.jsmt_game.isFailed
+import com.example.jsmt_game.isWin
 import com.example.jsmt_game.levelSetup
+import com.example.jsmt_game.ui.theme.MinecraftFontFamily
 
 @Composable
 fun GamePage(navController: NavHostController, screenNumber: Int) {
@@ -35,9 +39,9 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
             color = Color.White,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
+            fontFamily = MinecraftFontFamily,
             modifier = Modifier.offset(y = (-30).dp)
         )
-
 
         levelSetup(screenNumber)
         GameSetup()
@@ -51,19 +55,16 @@ fun GamePage(navController: NavHostController, screenNumber: Int) {
             colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
 
         ) {
-            Text(text = "Back To Home")
+            Text(text = "Back To Home",
+                fontFamily = MinecraftFontFamily
+            )
         }
 
-        // ปุ่ม rak
-//        Button(
-//            onClick = {
-//                GameSetup()
-//            },
-//            modifier = Modifier.padding(top = 20.dp),
-//            colors =  ButtonDefaults.buttonColors(Color(0xFFFF69B4))
-//
-//        ) {
-//            Text(text = "Restart")
-//        }
+        Text(text = if (isWin && !isFailed) "Yeah! You Passed!"
+            else if (isFailed && !isWin) "Nice try"
+            else "",
+            fontFamily = MinecraftFontFamily
+        )
+
     }
 }

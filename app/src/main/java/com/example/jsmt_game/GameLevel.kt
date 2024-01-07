@@ -159,7 +159,6 @@ val level20 = arrayListOf(
     arrayListOf(0, 1, 0, 1, 0),
 )
 public var level: ArrayList<ArrayList<Int>> = level1
-
 public fun levelSetup(screenNumber: Int) {
     level = when (screenNumber) {
         1 -> level1

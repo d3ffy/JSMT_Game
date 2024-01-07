@@ -1,11 +1,14 @@
 package com.example.jsmt_game
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.StrokeCap
@@ -42,18 +45,16 @@ fun Cross() {
 }
 
 @Composable
-fun Circle() {
-    val color = Blue
-    val strokeWidth = 20f
-
+fun Filled() {
     Canvas(
         modifier = Modifier
-            .size(60.dp)
-            .padding(5.dp)
+            .fillMaxSize()
+            .padding(0.dp)
     ) {
-        drawCircle(
-            color = color,
-            style = Stroke(width = strokeWidth)
+        drawRect(
+            color = Color.DarkGray,
+            size = Size(size.width, size.height),
+            topLeft = Offset(0f, 0f),
         )
     }
 }
@@ -66,6 +67,6 @@ fun CrossPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun CirclePreview() {
-    Circle()
+fun FilledPreview() {
+    Filled()
 }

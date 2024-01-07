@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -22,6 +21,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,6 +33,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.jsmt_game.ui.theme.MinecraftFontFamily
 
 var heart = 3
 var isFailed: Boolean = false
@@ -87,25 +88,11 @@ public fun gameReset() {
     heart = 3
     isFailed = false
     isWin = false
+    tempClickedList = Array(level.size) { Array(level.size) { 0 } }
 }
 @Composable
 public fun GameSetup() {
     CreateBoard(level)
-}
-
-@Composable
-fun Filled() {
-    Canvas(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(0.dp)
-    ) {
-        drawRect(
-            color = Color(0xFFFFFedc2efB),
-            size = Size(size.width, size.height),
-            topLeft = Offset(0f, 0f),
-        )
-    }
 }
 
 @Composable
@@ -151,11 +138,12 @@ fun CreateCell(
             }
         }
 
-        for (i in 0..level.size-1) {
+        println("Index: $idx, Ans: $ans, Heart: ${heart}, isFailed: ${isFailed}, isWin: $isWin")
+        for (i in 0..<level.size) {
             var horizontalScore = 0
             var verticalScore = 0
 
-            for (j in 0..level.size - 1){
+            for (j in 0..<level.size){
                 if (level[i][j] == 1 && tempClickedList[i][j] == 0){
                     horizontalScore -= 1
                 }
@@ -169,18 +157,17 @@ fun CreateCell(
                 tempClickedList[i] = Array(level.size) { 1 }
             }
             if (verticalScore >= 0){
-                for (j in 0..level.size-1){
+                for (j in 0..<level.size){
                     tempClickedList[j][i] = 1
                 }
             }
         }
-
     }
 }
 fun checkWin():Boolean {
     if(heart != 0){
-        for (i in 0..level.size-1){
-            for (j in 0..level.size-1){
+        for (i in 0..<level.size){
+            for (j in 0..<level.size){
                 if (level[i][j] == 1 &&level[i][j] != tempClickedList[i][j]) {
                     return false
                 }
@@ -204,19 +191,16 @@ fun CreateBoard(
 
     Column (
         modifier = Modifier
-            .border(1.dp, Color.Black)
+            .border(1.dp, Color.Gray)
     ){
         Row (
             modifier = Modifier
-                .border(1.dp, Color(0xFFFFFedc2ef))
-        ) {
-            Column(
+                .border(1.dp, Color.Gray)
+        ){
+            Column (
                 modifier = Modifier
-                    .width(300.dp / level.size)
-            )
-            {
-
-            }
+                    .width(300.dp/level.size)
+            ) {}
             Column (
                 modifier = Modifier
             ){
@@ -226,24 +210,22 @@ fun CreateBoard(
                     items(colHints) { col ->
                         LazyColumn(
                             modifier = Modifier
-                                .border(1.dp, Color(0xFFFFFedc2ef))
+                                .border(1.dp, Color.Gray)
                                 .width(300.dp / level.size)
-                                .padding(5.dp)
-                                .offset(x = 25.dp)
                         ){
                             items(col) { item ->
-                                Text(text = "$item")
+                                Text(text = " $item",
+                                    fontFamily = MinecraftFontFamily,
+                                    modifier = Modifier.padding(5.dp))
                             }
                         }
-
-
                     }
                 }
             }
         }
         Row (
             modifier = Modifier
-                .border(1.dp, Color.Black)
+                .border(1.dp, Color.Gray)
         ){
             LazyColumn (
                 modifier = Modifier
@@ -253,27 +235,23 @@ fun CreateBoard(
                     LazyRow (
                         modifier = Modifier
                             .height(300.dp / level.size)
-                            .offset(x = 20.dp)
-                            .offset(y = 15.dp)
-
                     ){
                         items(row) { item ->
-                            Text(text="$item")
+                            Text(text=" $item",
+                                fontFamily = MinecraftFontFamily,
+                                modifier = Modifier.padding(5.dp))
                         }
                     }
-
                 }
             }
-            //ตาราง
             Column (
                 modifier = Modifier
-                    .border(1.dp, Color.Black)
+                    .border(1.dp, Color.Gray)
                     .height(300.dp)
-
             ){
                 Box(
                     modifier = Modifier
-                        .border(1.dp, Color.Red)
+                        .border(1.dp, Color.Gray)
                         .size(width = 300.dp, height = 300.dp)
                 ) {
                     LazyVerticalGrid(
